@@ -1,9 +1,13 @@
+function encodePath(path) {
+  return path.split("/").map(encodeURIComponent).join("/");
+}
+
 function buildFolderUrl(parentHash, path = "") {
-  return `/files/${parentHash}/${path}`;
+  return `/files/${parentHash}/${encodePath(path)}`;
 }
 
 function buildFileUrl(parentHash, path) {
-  return `/content/${parentHash}/${path}`;
+  return `/content/${parentHash}/${encodePath(path)}`;
 }
 
 function buildBreadcrumbs(hash, path) {
@@ -31,7 +35,7 @@ function buildBreadcrumbs(hash, path) {
       fullPath += `${part}/`;
       bc.push({
         text: part,
-        href: `/files/${hash}/${fullPath}`
+        href: buildFolderUrl(hash, fullPath)
       });
     }
 
