@@ -1,0 +1,8 @@
+{
+  "name": "git-viewer-navigation-qa",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "test:unit": "node --test navigation.test.js"
+  }
+}
